@@ -111,7 +111,22 @@ public final class CS {
                 if (sink.eager) {
                     cursorSet.add(sink);
                 }
-                dirtyTheSinks(sink);
+                staleTheSinksIfNotDirtyOrStaleRecursively(node);
+            }
+        }
+    }
+
+    private static void staleTheSinksIfNotDirtyOrStaleRecursively(Node node) {
+        if (node.sinks == null) {
+            return;
+        }
+        for (Node sink : node.sinks) {
+            if (sink.state != Node.State.STALE && sink.state != Node.State.STALE) {
+                sink.state = Node.State.STALE;
+                if (sink.eager) {
+                    cursorSet.add(sink);
+                }
+                staleTheSinksIfNotDirtyOrStaleRecursively(node);
             }
         }
     }
