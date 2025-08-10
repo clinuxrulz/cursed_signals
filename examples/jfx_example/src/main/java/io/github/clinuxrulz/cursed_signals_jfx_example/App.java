@@ -1,6 +1,7 @@
 package io.github.clinuxrulz.cursed_signals_jfx_example;
 
 import io.github.clinuxrulz.cursed_signals.CS;
+import io.github.clinuxrulz.cursed_signals_jfx_backend.HyperJfx;
 import javafx.application.Application;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -24,8 +25,9 @@ public class App extends Application {
                     h(
                         Label::new,
                         (attr) -> {
+                            Label attr2 = (Label)attr;
                             CS.createEffect(() -> {
-                                attr.setText("Value: " + s.get().get());
+                                attr2.setText("Value: " + s.get().get());
                             });
                         },
                         CS.createMemo(() -> new Node[0])
@@ -33,16 +35,18 @@ public class App extends Application {
                     h(
                         Button::new,
                         (attr) -> {
-                            attr.setText("+");
-                            attr.setOnAction((e) -> s.set().accept(s.get().get() + 1));
+                            Button attr2 = (Button)attr;
+                            attr2.setText("+");
+                            attr2.setOnAction((e) -> s.set().accept(s.get().get() + 1));
                         },
                         CS.createMemo(() -> new Node[0])
                     ),
                     h(
                         Button::new,
                         (attr) -> {
-                            attr.setText("-");
-                            attr.setOnAction((e) -> s.set().accept(s.get().get() - 1));
+                            Button attr2 = (Button)attr;
+                            attr2.setText("-");
+                            attr2.setOnAction((e) -> s.set().accept(s.get().get() - 1));
                         },
                         CS.createMemo(() -> new Node[0])
                     )
