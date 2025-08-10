@@ -195,31 +195,23 @@ public final class CS {
         return transaction(k);
     }
 
-    // Fix: Changed Function to BiFunction
     public static <A> Accessor<A> createMemo(Supplier<A> k, BiFunction<A, A, Boolean> equals) {
         if (owner == null) {
             throw new IllegalStateException("Creating a memo outside owner is not supported.");
         }
-        
-        // Fix: Use Objects::equals for null-safe comparison
         BiFunction<A, A, Boolean> comparator = (equals == null) ? Objects::equals : equals;
-        
-        // Fix: Use an AtomicReference to hold a mutable value
         AtomicReference<A> valueRef = new AtomicReference<>(null);
         Node node = new Node(false);
         node.children = new HashSet<>();
         node.cleanups = new ArrayDeque<>();
         node.sources = new HashSet<>();
         node.sinks = new HashSet<>();
-
         node.update = () -> {
             A oldValue = valueRef.get();
             valueRef.set(useOwnerAndObserver(node, k));
             return !comparator.apply(valueRef.get(), oldValue); // Fix: Corrected logic and usage
         };
-
         owner.children.add(node);
-
         return () -> {
             if (observer != null) {
                 observer.sources.add(node);
@@ -272,12 +264,18 @@ public final class CS {
         return useObserver(null, k);
     }
 
+    public static void untrackVoid(Runnable k) {
+        CS.untrack(() -> {
+            k.run();
+            return 0;
+        });
+    }
+
     public static <A> Signal<A> createSignal() {
         return createSignal(null);
     }
 
     public static <A> Signal<A> createSignal(A a) {
-        // Fix: Use AtomicReference to hold a mutable value
         AtomicReference<A> valueRef = new AtomicReference<>(a);
 
         Node node = new Node(true);
