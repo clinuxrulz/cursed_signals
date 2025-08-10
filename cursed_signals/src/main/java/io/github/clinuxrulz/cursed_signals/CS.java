@@ -109,7 +109,8 @@ public final class CS {
                 if (sink.eager) {
                     cursorSet.add(sink);
                 }
-                staleTheSinksIfNotDirtyOrStaleRecursively(node);
+                //staleTheSinksIfNotDirtyOrStaleRecursively(node);
+                dirtyTheSinks(sink);
             }
         }
     }
