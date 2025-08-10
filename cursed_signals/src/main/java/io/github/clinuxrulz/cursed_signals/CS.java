@@ -109,8 +109,7 @@ public final class CS {
                 if (sink.eager) {
                     cursorSet.add(sink);
                 }
-                //staleTheSinksIfNotDirtyOrStaleRecursively(node);
-                dirtyTheSinks(sink);
+                staleTheSinksIfNotDirtyOrStaleRecursively(node);
             }
         }
     }
@@ -120,7 +119,7 @@ public final class CS {
             return;
         }
         for (Node sink : node.sinks) {
-            if (sink.state != Node.State.STALE && sink.state != Node.State.STALE) {
+            if (sink.state != Node.State.STALE && sink.state != Node.State.DIRTY) {
                 sink.state = Node.State.STALE;
                 if (sink.eager) {
                     cursorSet.add(sink);
