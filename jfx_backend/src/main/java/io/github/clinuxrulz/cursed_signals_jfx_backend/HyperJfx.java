@@ -15,7 +15,7 @@ public class HyperJfx {
     public static <A extends Node> A h(
         Supplier<A> constructor,
         Consumer<A> attributes,
-        CS.Accessor<Node[]> children
+        CS.Accessor<? extends Node[]> children
     ) {
         return (A)h_.h(
             (Supplier)constructor,

@@ -24,9 +24,8 @@ public class App extends Application {
                     h(
                         Label::new,
                         (attr) -> {
-                            Label attr2 = (Label)attr;
                             CS.createEffect(() -> {
-                                attr2.setText("Value: " + s.get().get());
+                                attr.setText("Value: " + s.get().get());
                             });
                         },
                         CS.createMemo(() -> new Node[0])
@@ -34,18 +33,16 @@ public class App extends Application {
                     h(
                         Button::new,
                         (attr) -> {
-                            Button attr2 = (Button)attr;
-                            attr2.setText("+");
-                            attr2.setOnAction((e) -> s.set().accept(s.get().get() + 1));
+                            attr.setText("+");
+                            attr.setOnAction((e) -> s.set().accept(s.get().get() + 1));
                         },
                         CS.createMemo(() -> new Node[0])
                     ),
                     h(
                         Button::new,
                         (attr) -> {
-                            Button attr2 = (Button)attr;
-                            attr2.setText("-");
-                            attr2.setOnAction((e) -> s.set().accept(s.get().get() - 1));
+                            attr.setText("-");
+                            attr.setOnAction((e) -> s.set().accept(s.get().get() - 1));
                         },
                         CS.createMemo(() -> new Node[0])
                     )
