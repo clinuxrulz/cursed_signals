@@ -58,35 +58,81 @@
         <version>24.0.2</version>
     </dependency>
 
-    <!-- Platform-specific dependencies.
-          You should use a Maven profile to activate these based on the OS.
-          Here, we'll include them all for a general example.
-          NOTE: OpenJFX's official documentation recommends using Maven profiles
-          to avoid including all native libraries. -->
-    <dependency>
-        <groupId>org.openjfx</groupId>
-        <artifactId>javafx-controls</artifactId>
-        <version>24.0.2</version>
-        <classifier>win</classifier>
-    </dependency>
-    <dependency>
-        <groupId>org.openjfx</groupId>
-        <artifactId>javafx-controls</artifactId>
-        <version>24.0.2</version>
-        <classifier>linux</classifier>
-    </dependency>
-    <dependency>
-        <groupId>org.openjfx</groupId>
-        <artifactId>javafx-controls</artifactId>
-        <version>24.0.2</version>
-        <classifier>mac</classifier>
-    </dependency>
     <dependency>
         <groupId>io.github.clinuxrulz</groupId>
         <artifactId>cursed_signals</artifactId>
         <version>1.0-SNAPSHOT</version>
     </dependency>
   </dependencies>
+
+ <profiles>
+    <profile>
+        <id>win</id>
+        <activation>
+            <os>
+                <family>windows</family>
+            </os>
+        </activation>
+        <dependencies>
+            <dependency>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-controls</artifactId>
+                <version>24.0.2</version>
+                <classifier>win</classifier>
+            </dependency>
+            <dependency>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-fxml</artifactId>
+                <version>24.0.2</version>
+                <classifier>win</classifier>
+            </dependency>
+        </dependencies>
+    </profile>
+    <profile>
+        <id>linux</id>
+        <activation>
+            <os>
+                <family>unix</family>
+            </os>
+        </activation>
+        <dependencies>
+            <dependency>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-controls</artifactId>
+                <version>24.0.2</version>
+                <classifier>linux</classifier>
+            </dependency>
+            <dependency>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-fxml</artifactId>
+                <version>24.0.2</version>
+                <classifier>linux</classifier>
+            </dependency>
+        </dependencies>
+    </profile>
+    <profile>
+        <id>mac</id>
+        <activation>
+            <os>
+                <family>mac</family>
+            </os>
+        </activation>
+        <dependencies>
+            <dependency>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-controls</artifactId>
+                <version>24.0.2</version>
+                <classifier>mac</classifier>
+            </dependency>
+            <dependency>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-fxml</artifactId>
+                <version>24.0.2</version>
+                <classifier>mac</classifier>
+            </dependency>
+        </dependencies>
+    </profile>
+  </profiles>
 
   <build>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
