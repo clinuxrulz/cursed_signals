@@ -1,14 +1,13 @@
 package io.github.clinuxrulz.cursed_signals_jfx_example;
 
 import io.github.clinuxrulz.cursed_signals.CS;
-import io.github.clinuxrulz.cursed_signals_jfx_backend.HyperJfx;
 import javafx.application.Application;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import static io.github.clinuxrulz.cursed_signals_jfx_backend.HyperJfx.h;
@@ -19,7 +18,7 @@ public class App extends Application {
         var s = CS.createSignal(0);
         var root = CS.<Node>createRoot((dispose) -> {
             return h(
-                StackPane::new,
+                VBox::new,
                 (attr) -> {},
                 CS.createMemo(() -> new Node[] {
                     h(
