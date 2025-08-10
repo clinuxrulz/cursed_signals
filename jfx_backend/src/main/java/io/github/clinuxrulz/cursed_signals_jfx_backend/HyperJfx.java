@@ -12,12 +12,12 @@ public class HyperJfx {
     private static Hyper.H<Object> h_ = Hyper.makeH(strategy);
 
     @SuppressWarnings({ "rawtypes", "unchecked" })
-    public static <A extends Node> Node h(
+    public static <A extends Node> A h(
         Supplier<A> constructor,
         Consumer<A> attributes,
         CS.Accessor<Node[]> children
     ) {
-        return (Node)h_.h(
+        return (A)h_.h(
             (Supplier)constructor,
             (Consumer)attributes,
             (CS.Accessor)children
