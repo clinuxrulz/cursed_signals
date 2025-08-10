@@ -2,14 +2,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>io.github.clinuxrulz</groupId>
-  <artifactId>cursed_signals_parent</artifactId>
+  <artifactId>cursed_signals_examples</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
-  <name>cursed_signals_parent</name>
+  <name>cursed_signals_examples</name>
+  <parent>
+    <groupId>io.github.clinuxrulz</groupId>
+    <artifactId>cursed_signals_parent</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
   <modules>
-    <module>cursed_signals</module>
-    <module>jfx_backend</module>
-    <module>examples</module>
+    <module>jfx_example</module>
   </modules>
   <build>
     <pluginManagement>
