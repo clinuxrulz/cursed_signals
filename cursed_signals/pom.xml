@@ -3,18 +3,12 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>io.github.clinuxrulz</groupId>
-  <artifactId>cursed_signals_jfx_backend</artifactId>
+  <artifactId>cursed_signals</artifactId>
   <version>1.0-SNAPSHOT</version>
 
-  <name>cursed_signals_jfx_backend</name>
+  <name>cursed_signals</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
-
-  <parent>
-    <groupId>io.github.clinuxrulz</groupId>
-    <artifactId>cursed_signals_parent</artifactId>
-    <version>1.0-SNAPSHOT</version>
-  </parent>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -44,42 +38,6 @@
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-params</artifactId>
       <scope>test</scope>
-    </dependency>
-
-    <!-- OpenJFX for JavaFX 21 -->
-    <dependency>
-        <groupId>org.openjfx</groupId>
-        <artifactId>javafx-controls</artifactId>
-        <version>24.0.2</version>
-    </dependency>
-    <dependency>
-        <groupId>org.openjfx</groupId>
-        <artifactId>javafx-fxml</artifactId>
-        <version>24.0.2</version>
-    </dependency>
-
-    <!-- Platform-specific dependencies.
-          You should use a Maven profile to activate these based on the OS.
-          Here, we'll include them all for a general example.
-          NOTE: OpenJFX's official documentation recommends using Maven profiles
-          to avoid including all native libraries. -->
-    <dependency>
-        <groupId>org.openjfx</groupId>
-        <artifactId>javafx-controls</artifactId>
-        <version>24.0.2</version>
-        <classifier>win</classifier>
-    </dependency>
-    <dependency>
-        <groupId>org.openjfx</groupId>
-        <artifactId>javafx-controls</artifactId>
-        <version>24.0.2</version>
-        <classifier>linux</classifier>
-    </dependency>
-    <dependency>
-        <groupId>org.openjfx</groupId>
-        <artifactId>javafx-controls</artifactId>
-        <version>24.0.2</version>
-        <classifier>mac</classifier>
     </dependency>
   </dependencies>
 
