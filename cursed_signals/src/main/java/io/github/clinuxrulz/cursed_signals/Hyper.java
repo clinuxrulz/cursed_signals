@@ -6,7 +6,7 @@ import java.util.function.Supplier;
 import io.github.clinuxrulz.cursed_signals.CS.Accessor;
 
 public class Hyper {
-    interface H<N> {
+    public interface H<N> {
         N h(
             Supplier<N> constructor,
             Consumer<N> attributes,
@@ -14,7 +14,7 @@ public class Hyper {
         );
     }
 
-    static <N> H<N> makeH(HyperStrategy<N> strategy) {
+    public static <N> H<N> makeH(HyperStrategy<N> strategy) {
         return new H<N>() {
             @Override
             public N h(Supplier<N> constructor, Consumer<N> attributes, Accessor<N[]> children) {
